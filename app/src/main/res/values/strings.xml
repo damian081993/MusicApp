@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MusicApp</string>
+    <string name="strings" />
+    <string name="top_songs" />
 </resources>
