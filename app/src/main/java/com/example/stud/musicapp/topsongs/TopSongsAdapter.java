@@ -14,56 +14,55 @@ import com.example.stud.musicapp.api.TrendingSingle;
 
 import java.util.List;
 
-public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSongsViewHolder> {
+public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSongsViewHolder>{
 
-    private List<TrendingSingle> singles;
+    List<TrendingSingle> singles;
 
-    public TopSongsAdapter (List<TrendingSingle> singles){
-
+    public TopSongsAdapter(List<TrendingSingle> singles) {
         this.singles = singles;
+
+
     }
 
     @Override
     public TopSongsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater. from (parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_top_songs, parent, false );
-        return new TopSongsViewHolder(view);
 
+        return new TopSongsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(TopSongsViewHolder holder, int position) {
 
-        TrendingSingle single = singles.get (position);
+        final TrendingSingle single= singles.get(position);
 
         holder.tvPlace.setText(String.valueOf(single.intChartPlace));
         holder.tvTrack.setText(single.strTrack);
         holder.tvArtist.setText(single.strArtist);
         holder.tvAlbum.setText(single.strAlbum);
-        holder.llContainer.setOnClickListener(new View.OnClickListener() {
+
+        holder.llContainer.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), SongDetailsActivity. class );
-                intent.putExtra(SongDetailsActivity. TRACK , trendingSingle . strTrack );
-                intent.putExtra(SongDetailsActivity. ARTIST , trendingSingle . strArtist );
-                intent.putExtra(SongDetailsActivity. TRACK_ID , trendingSingle . idTrack );
-                v.getContext().startActivity(intent);
-
-
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), SongDetailsActivity.class);
+                intent.putExtra(SongDetailsActivity.TRACK, single.strTrack);
+                intent.putExtra(SongDetailsActivity.ARTIST, single.strArtist);
+                intent.putExtra(SongDetailsActivity.TRACK_ID, single.idTrack);
+                view.getContext().startActivity(intent);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return singles != null ? singles.size() : 0;
+        return singles == null ? 0 : singles.size();
     }
 
     public class TopSongsViewHolder extends RecyclerView.ViewHolder{
 
         LinearLayout llContainer ;
-
         TextView tvPlace;
         TextView tvTrack;
         TextView tvArtist;
@@ -72,15 +71,12 @@ public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSon
         public TopSongsViewHolder(View itemView) {
             super(itemView);
 
-            tvPlace = itemView.findViewById((R.id.tvPlace));
-            tvTrack = itemView.findViewById((R.id.tvTrack));
-            tvArtist = itemView.findViewById((R.id.tvArtist));
-            tvAlbum = itemView.findViewById((R.id.tvAlbum));
-
-            llContainer = itemView.findViewById(R.id. llContainer );
-
+            llContainer = itemView.findViewById(R.id.llContainer);
+            tvPlace = itemView.findViewById(R.id.tvPlace);
+            tvTrack = itemView.findViewById(R.id.tvTrack);
+            tvArtist = itemView.findViewById(R.id.tvArtist);
+            tvAlbum = itemView.findViewById(R.id.tvAlbum);
 
         }
     }
-
 }

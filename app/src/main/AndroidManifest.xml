@@ -21,6 +21,11 @@
         <activity
             android:name=".topsongs.TopSongsActivity"
             android:label="@string/top_songs"></activity>
+
+        <activity
+            android:name=".topsongs.SongDetailsActivity"
+            ></activity>
+
     </application>
 
 </manifest>
