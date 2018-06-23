@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.example.stud.musicapp.R;
-import com.example.stud.musicapp.api.apiService;
+import com.example.stud.musicapp.api.ApiService;
 import com.example.stud.musicapp.api.TrendingList;
 import com.example.stud.musicapp.api.TrendingSingle;
 
@@ -36,7 +36,7 @@ public class TopSongsActivity extends AppCompatActivity {
 
 
 
-        Call<TrendingList> trendingListCall = apiService. getService ().getTrendingList( "us" ,
+        Call<TrendingList> trendingListCall = ApiService. getService ().getTrendingList( "us" ,
                 "itunes" , "singles" );
         trendingListCall.enqueue( new Callback<TrendingList>() {
             @Override
